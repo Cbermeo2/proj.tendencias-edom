@@ -19,8 +19,8 @@ class CafeteriaServicio {
         return cafeteriaRepository.save(cafeteria)
     }
 
-    fun update(cliente:Cafeteria):Cafeteria{
-        return cafeteriaRepository.save(cliente)
+    fun update(cafeteria:Cafeteria):Cafeteria{
+        return cafeteriaRepository.save(cafeteria)
     }
 
     fun updateDescription (cafeteria:Cafeteria):Cafeteria {

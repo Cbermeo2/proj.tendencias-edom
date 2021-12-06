@@ -27,11 +27,8 @@ class ProductosServicio {
         val response = productosRepository.findById(productos.id)
             ?: throw Exception()
         response.apply {
-            this.Nombre=productos.Nombre;
-            this.Apellido=productos.Apellido;
-            this.Direccion_Residencia=productos.Direccion_Residencia;
-            this.Edad=productos.Edad;
-
+            this.nombre=productos.nombre;
+            this.id_cafeteria=productos.id_cafeteria;
         }
         return productosRepository.save(productos)
     }
