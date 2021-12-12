@@ -3,7 +3,9 @@ package com.carlos.paquetes.app.service
 import com.carlos.paquetes.app.model.Cafeteria
 import com.carlos.paquetes.app.repository.CafeteriaRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 
 @Service
 class CafeteriaServicio {
@@ -16,7 +18,23 @@ class CafeteriaServicio {
     }
 
     fun save(cafeteria:Cafeteria):Cafeteria{
-        return cafeteriaRepository.save(cafeteria)
+        try{
+            if(cafeteria.nombre?.trim()?.isEmpty() == true){
+               throw Exception("El nombre no puede estar vacio")}
+
+            if(cafeteria.telefono?.trim()?.isEmpty() == true){
+                throw Exception("El telefono no puede estar vacio")}
+
+            if(cafeteria.direccion?.trim()?.isEmpty() == true){
+                throw Exception("L direccion  no puede estar vacio")}
+
+            return cafeteriaRepository.save(cafeteria)
+
+        }catch (ex: Exception) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND, ex.message, ex)
+        }
+
     }
 
     fun update(cafeteria:Cafeteria):Cafeteria{
