@@ -38,6 +38,13 @@ class CafeteriaServicio {
     }
 
     fun update(cafeteria:Cafeteria):Cafeteria{
+        val response = cafeteriaRepository.findById(cafeteria.id)
+            ?: throw Exception()
+        response.apply {
+            this.nombre=cafeteria.nombre;
+            this.telefono=cafeteria.telefono;
+            this.direccion=cafeteria.direccion;
+        }
         return cafeteriaRepository.save(cafeteria)
     }
 

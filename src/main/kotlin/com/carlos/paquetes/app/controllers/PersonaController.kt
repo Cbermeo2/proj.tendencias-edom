@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("/persona")
+@RequestMapping(
+    "/persona"
+)
 @CrossOrigin(methods = [RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.PUT])
 
 class PersonaController {
